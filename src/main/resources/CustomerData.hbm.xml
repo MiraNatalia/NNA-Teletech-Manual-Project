@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+ <class name="com.example.tests.CustomerData" table="tmsw_cust">
+ <id name="tmsw_cust_id" column="tmsw_cust_id" ></id>
+ <property name="first_name" column="first_name" />
+ <property name="mid_name" column="mid_name" />
+ <property name="last_name" column="last_name" />
+ </class>
+</hibernate-mapping>
+
