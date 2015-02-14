@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.teletech.test.StoredProcedure1Test">
+      <class name="com.teletech.test.Sample_Hibernate">
         <methods>
-          <include name="executeStatement"/>
+          <include name="SampleTest"/>
         </methods>
-      </class> <!-- com.teletech.test.StoredProcedure1Test -->
+      </class> <!-- com.teletech.test.Sample_Hibernate -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

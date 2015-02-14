@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-<class name="com.example.tests.Cust_Email" table="cust_email_test">
+<class name="com.teletech.data.CustEmail" table="cust_email_test">
 <id name="email_id" column="email_id" ></id>
 <property name="tmsw_cust_id" column="tmsw_cust_id" />
 <property name="email_type_cd" column="email_type_cd" />
