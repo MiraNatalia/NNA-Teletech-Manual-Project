@@ -14,7 +14,7 @@
 <property name="date_updated" column="date_updated" />
 <property name="vendor_data_source_cd" column="vendor_data_source_cd" />
 <property name="verified" column="verified" />
-<property name="no_of_attampt" column="no_of_attampt" />
+<property name="no_of_attempt" column="no_of_attempt" />
 <property name="email_addr_last_updated" column=" email_addr_last_updated" />
 <property name="rowguid" column=" rowguid" />
 <property name="data_source_cd" column=" data_source_cd" />

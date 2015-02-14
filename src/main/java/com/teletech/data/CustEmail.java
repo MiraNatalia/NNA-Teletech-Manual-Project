@@ -14,7 +14,7 @@ public class CustEmail {
 	private int brand_suppression;
 	private int invalid_email;
 	private int verified;
-	private int no_of_attampt;
+	private int no_of_attempt;
 	private char email_status_cd;
 	private Date do_not_email_last_updated;
 	private Date date_updated;
@@ -45,7 +45,7 @@ public class CustEmail {
 		this.brand_suppression = brand_suppression;
 		this.invalid_email = invalid_email;
 		this.verified = verified;
-		this.no_of_attampt = no_of_attampt;
+		this.no_of_attempt = no_of_attampt;
 		this.email_status_cd = email_status_cd;
 		this.do_not_email_last_updated = do_not_email_last_updated;
 		this.date_updated = date_updated;
@@ -67,8 +67,8 @@ public class CustEmail {
 		return verified;
 	}
 
-	public int getNo_of_attampt() {
-		return no_of_attampt;
+	public int getNo_of_attempt() {
+		return no_of_attempt;
 	}
 
 	public char getEmail_status_cd() {
@@ -95,8 +95,8 @@ public class CustEmail {
 		this.verified = verified;
 	}
 
-	public void setNo_of_attampt(int no_of_attampt) {
-		this.no_of_attampt = no_of_attampt;
+	public void setNo_of_attempt(int no_of_attampt) {
+		this.no_of_attempt = no_of_attampt;
 	}
 
 	public void setEmail_status_cd(char email_status_cd) {
@@ -215,7 +215,7 @@ public class CustEmail {
 		result = prime * result + email_status_cd;
 		result = prime * result + email_type_cd;
 		result = prime * result + invalid_email;
-		result = prime * result + no_of_attampt;
+		result = prime * result + no_of_attempt;
 		result = prime * result + ((rowguid == null) ? 0 : rowguid.hashCode());
 		result = prime * result + tmsw_cust_id;
 		result = prime
@@ -274,7 +274,7 @@ public class CustEmail {
 			return false;
 		if (invalid_email != other.invalid_email)
 			return false;
-		if (no_of_attampt != other.no_of_attampt)
+		if (no_of_attempt != other.no_of_attempt)
 			return false;
 		if (rowguid == null) {
 			if (other.rowguid != null)
@@ -302,7 +302,7 @@ public class CustEmail {
 				+ ", email_addr=" + email_addr + ", do_not_email="
 				+ do_not_email + ", brand_suppression=" + brand_suppression
 				+ ", invalid_email=" + invalid_email + ", verified=" + verified
-				+ ", no_of_attampt=" + no_of_attampt + ", email_status_cd="
+				+ ", no_of_attampt=" + no_of_attempt + ", email_status_cd="
 				+ email_status_cd + ", do_not_email_last_updated="
 				+ do_not_email_last_updated + ", date_updated=" + date_updated
 				+ ", email_addr_last_updated=" + email_addr_last_updated

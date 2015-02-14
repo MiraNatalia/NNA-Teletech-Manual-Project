@@ -19,7 +19,7 @@ public class HibernateEmailHelper extends HelperBase {
 		Session session = factory.openSession();
 		Transaction trans = session.beginTransaction();
 		try {
-			return (List<CustEmail>) session.createQuery("from Cust_Email")
+			return (List<CustEmail>) session.createQuery("from CustEmail")
 					.list();
 		} finally {
 			trans.commit();
