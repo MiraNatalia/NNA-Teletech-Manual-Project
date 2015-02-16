@@ -11,25 +11,6 @@ import com.teletech.data.TestCase;
 
 public class TestDataGenerator extends TestDataGeneratorBase {
 
-	public static void main(String[] args) throws IOException {
-		if (args.length < 3) {
-			System.out
-					.println("Please specify parametrs: <amount of test data> <file> <format>");
-		}
-
-		int amount = Integer.parseInt(args[0]);
-		File file = new File(args[1]);
-		String format = args[2];
-
-		if (file.exists()) {
-			System.out
-					.println("File already exists, please delete it manually: "
-							+ file);
-			return;
-		}
-
-	}
-
 	public static List<TestCase> loadTestCasesFromCsvFile(File file)
 			throws IOException {
 		List<TestCase> list = new ArrayList<TestCase>();
@@ -38,8 +19,8 @@ public class TestDataGenerator extends TestDataGeneratorBase {
 		String line = buffReader.readLine();
 		while (line != null) {
 			String[] split = line.split(",");
-			TestCase testCase = ((Object) new TestCase()
-					.setJiraTicket(split[0]))
+			TestCase testCase = new TestCase()
+					.setJiraTicket(split[0])
 					.setMake(split[1])
 					.setActivityType(split[2])
 					.setPrefCommMethodId(split[3])
@@ -57,6 +38,7 @@ public class TestDataGenerator extends TestDataGeneratorBase {
 					.setHomeMailBrandSuppression(split[15])
 					.setWorkDoNotMail(split[16])
 					.setWorkMailBrandSuppression(split[17]);
+			
 			line = buffReader.readLine();
 			list.add(testCase);
 		}
