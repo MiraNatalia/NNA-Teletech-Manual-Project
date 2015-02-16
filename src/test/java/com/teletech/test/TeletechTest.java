@@ -1,25 +1,30 @@
 package com.teletech.test;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.CallableStatement;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Iterator;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.teletech.data.TestCase;
 import com.teletech.utils.HibernateUtil;
+import static com.teletech.utils.TestDataGenerator.loadTestCasesFromCsvFile;
 
 public class TeletechTest extends TestBase {
 
-	// @DataProvider
-	// public Iterator<Object[]> groupsFromFile() throws IOException {
-	// return wrapGroupsForDataProvider(loadGroupsFromXmlFile(new
-	// File("groups.xml"))).iterator();
-	// }
-	//
-	// // v2. test method will receive test data out of an external file
-	// // (groupsFromFile)
+	 @DataProvider
+	 public Iterator<Object[]> testCasesFromFile() throws IOException {
+	 return wrapTestCasesForDataProvider(loadTestCasesFromCsvFile(new
+	 File("teletechTestCases.csv"))).iterator();
+	 }
+	
 
 	// java core library java.sql package
 	Connection conn = null;
@@ -32,11 +37,11 @@ public class TeletechTest extends TestBase {
 
 	@Test
 	// @Test(dataProvider = "groupsFromFile")
-	public void teletechBasicTestDataCreation() {
-		
+	public void teletechBasicTestDataCreation(TestCase testCase) {
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction trans = session.beginTransaction();
-		
+
 		try {
 
 			conn = HibernateUtil.getConnection();
