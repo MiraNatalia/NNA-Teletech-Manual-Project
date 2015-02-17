@@ -39,10 +39,8 @@ public class TestDataGenerator extends TestDataGeneratorBase {
 		while (line != null) {
 			String[] split = line.split(",");
 			TestCase testCase = ((Object) new TestCase()
-					.setJiraTicket(split[0]))
-					.setMake(split[1])
-					.setActivityType(split[2])
-					.setPrefCommMethodId(split[3])
+					.setJiraTicket(split[0])).setMake(split[1])
+					.setActivityType(split[2]).setPrefCommMethodId(split[3])
 					.setHomeDoNotPhone(split[4])
 					.setHomePhoneBrandSuppression(split[5])
 					.setWorkDoNotPhone(split[6])
