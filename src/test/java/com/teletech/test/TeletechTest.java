@@ -19,24 +19,22 @@ import static com.teletech.utils.TestDataGenerator.loadTestCasesFromCsvFile;
 
 public class TeletechTest extends TestBase {
 
-	 @DataProvider
-	 public Iterator<Object[]> testCasesFromFile() throws IOException {
-	 return wrapTestCasesForDataProvider(loadTestCasesFromCsvFile(new
-	 File("teletechTestCases.csv"))).iterator();
-	 }
-	
-
 	// java core library java.sql package
 	Connection conn = null;
 	CallableStatement stmt = null;
 
 	public TeletechTest() {
 		super();
-
+	}
+	
+	@DataProvider
+	public Iterator<Object[]> testCasesFromFile() throws IOException {
+		return wrapTestCasesForDataProvider(
+				loadTestCasesFromCsvFile(new File("teletechTestCases.csv")))
+				.iterator();
 	}
 
-	@Test
-	// @Test(dataProvider = "groupsFromFile")
+	@Test(dataProvider = "testCasesFromFile")
 	public void teletechBasicTestDataCreation(TestCase testCase) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -46,26 +44,45 @@ public class TeletechTest extends TestBase {
 
 			conn = HibernateUtil.getConnection();
 
-			String sql = "{call nna_test_case_template ('61', '1', 'NSC', 1, 1, 1, 1, 2,''  ,'', 1, 3, 0, null, 1, 2)}";
+			String sql = "{call nna_test_case_template (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}"; // 18 params
 
 			// callablestatement object initiation
 			stmt = conn.prepareCall(sql);
+			
+			// set parameters for statement from test case
+			// Bind IN parameter first, then bind OUT parameter
+			stmt.setString(1, testCase.getJiraTicket());
+			stmt.setString(2, testCase.getMake());
+			stmt.setString(3, testCase.getActivityType());
+			stmt.setString(4, testCase.getPrefCommMethodId());
+			stmt.setString(5, testCase.getHomeDoNotPhone());
+			stmt.setString(6, testCase.getHomePhoneBrandSuppression());
+			stmt.setString(7, testCase.getWorkDoNotPhone());
+			stmt.setString(8, testCase.getWorkPhoneBrandSuppression());
+			stmt.setString(9, testCase.getCellDoNotPhone());
+			stmt.setString(10, testCase.getCellPhoneBrandSuppression());
+			
+			stmt.setString(11, testCase.getWorkDoNotEmail());
+			stmt.setString(12, testCase.getWorkEmailBrandSuppression());
+			stmt.setString(13, testCase.getHomeDoNotEmail());
+			stmt.setString(14, testCase.getHomeEmailBrandSuppression());
+			
+			stmt.setString(15, testCase.getHomeDoNotMail());
+			stmt.setString(16, testCase.getHomeMailBrandSuppression());
+			stmt.setString(17, testCase.getWorkDoNotMail());
+			stmt.setString(18, testCase.getWorkMailBrandSuppression());
+			
 
-			// // Bind IN parameter first, then bind OUT parameter
-			// int empID = 102;
-			// stmt.setString(1, "Test");
-			// stmt.setInt(1, empID); // This would set ID as 102
-			// // Because second parameter is OUT so register it
+			// Bind OUT 
 			// stmt.registerOutParameter(2, java.sql.Types.VARCHAR);
 
 			// Use execute method to run stored procedure.
 			System.out.println("Executing stored procedure...");
 			stmt.execute();
 
-			// // Retrieve employee name with getXXX method
+			// Retrieve employee name with getXXX method
 			// String empName = stmt.getString(2);
-			// System.out.println("Emp Name with ID:" + empID + " is " +
-			// empName);
+			// System.out.println("Emp Name with ID:" + empID + " is " + empName);
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
